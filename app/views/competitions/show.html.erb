@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+  <%= @competition.title %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @competition.sportType %>
+</p>
+
+<p>
+  <strong>Início:</strong>
+  <%= @competition.start %>
+</p>
+
+<p>
+  <strong>Fim:</strong>
+  <% if not @competition.end.nil? %>
+  	<%= @competition.end %>
+  <% else %>
+  	<%= "em curso..." %>
+  <% end %>
+</p>
+
+<%= link_to 'Editar', edit_competition_path(@competition) %> |
+<%= link_to 'Voltar', competitions_path %>

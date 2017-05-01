@@ -1,0 +1,30 @@
+<%= form_for(@result) do |f| %>
+  <% if @result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Atleta" %><br>
+    <%= f.text_field :athlete %>
+  </div>
+  <div class="field">
+    <%= f.label "Valor" %><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label "Unidade (use s ou m)" %><br>
+    <!--<%= f.text_field :unit %>-->
+    <%= f.select :unit, ["s", "u"] %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Gravar Resultado" %>
+  </div>
+<% end %>
