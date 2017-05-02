@@ -26,3 +26,46 @@
 
 <%= link_to 'Editar', edit_competition_path(@competition) %> |
 <%= link_to 'Voltar', competitions_path %>
+
+<br>
+<h2>Resultados</h2>
+<% @competition.results.each do |result| %>
+	<p>
+	  <strong>Atleta:</strong>
+	  <%= result.athlete %>
+	</p>
+
+	<p>
+	  <strong>Valor:</strong>
+	  <%= result.value %>
+	</p>
+
+	<p>
+	  <strong>Unidade:</strong>
+	  <%= result.unit %>
+	</p>
+	<%= link_to 'Editar', edit_result_path(result) %> |
+	<%= link_to 'Voltar', results_path %> |
+	<%= link_to 'Apagar', result, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %>
+<% end %>
+
+<br>
+<h2>Adicionar Resultado</h2>
+<%= form_for ([@competition, @competition.results.build]) do |f| %>
+	<div class="field">
+	    <%= f.label "Atleta" %><br>
+	    <%= f.text_field :athlete %>
+	</div>
+	<div class="field">
+	    <%= f.label "Valor" %><br>
+	    <%= f.text_field :value %>
+	</div>
+	<div class="field">
+	    <%= f.label "Unidade (use s ou m)" %><br>
+	    <!--<%= f.text_field :unit %>-->
+	    <%= f.select :unit, ["s", "u"] %>
+	</div>
+	<div class="actions">
+	    <%= f.submit "Gravar Resultado" %>
+	</div>
+<% end %>

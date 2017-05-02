@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501215257) do
+ActiveRecord::Schema.define(version: 20170502025350) do
 
   create_table "competitions", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -23,11 +23,15 @@ ActiveRecord::Schema.define(version: 20170501215257) do
   end
 
   create_table "results", force: :cascade do |t|
-    t.string   "athlete",    limit: 255
-    t.float    "value",      limit: 24
-    t.string   "unit",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "athlete",        limit: 255
+    t.float    "value",          limit: 24
+    t.string   "unit",           limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "competition_id", limit: 4
   end
 
+  add_index "results", ["competition_id"], name: "index_results_on_competition_id", using: :btree
+
+  add_foreign_key "results", "competitions"
 end

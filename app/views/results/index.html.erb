@@ -20,7 +20,7 @@
         <td><%= result.unit %></td>
         <td><%= link_to 'Mostrar', result %></td>
         <td><%= link_to 'Editar', edit_result_path(result) %></td>
-        <td><%= link_to 'Apagar', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Apagar', result, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %></td>
       </tr>
     <% end %>
   </tbody>
