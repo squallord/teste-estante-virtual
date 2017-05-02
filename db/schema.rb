@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502025350) do
+ActiveRecord::Schema.define(version: 20170502131542) do
 
   create_table "competitions", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170502025350) do
 
   create_table "results", force: :cascade do |t|
     t.string   "athlete",        limit: 255
-    t.float    "value",          limit: 24
+    t.float    "resultValue",    limit: 24
     t.string   "unit",           limit: 255
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

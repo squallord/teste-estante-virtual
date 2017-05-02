@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  before_action :set_result, only: [:show, :edit, :update, :destroy]
+  before_action :set_result, only: [:show, :edit,:update, :destroy]
 
   # GET /results
   # GET /results.json
@@ -59,7 +59,7 @@ class ResultsController < ApplicationController
   def destroy
     @result.destroy
     respond_to do |format|
-      format.html { redirect_to results_url, notice: 'Result was successfully destroyed.' }
+      format.html { redirect_to competitions_url, notice: 'Result was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,7 @@ class ResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
-      params.require(:result).permit(:athlete, :value, :unit)
+      params.require(:result).permit(:athlete, :resultValue, :unit)
+      #params.require(:result).permit!
     end
 end

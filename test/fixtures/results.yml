@@ -2,10 +2,10 @@
 
 one:
   athlete: MyString
-  value: 1.5
+  resultValue: 1.5
   unit: MyString
 
 two:
   athlete: MyString
-  value: 1.5
+  resultValue: 1.5
   unit: MyString

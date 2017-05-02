@@ -37,7 +37,7 @@
 
 	<p>
 	  <strong>Valor:</strong>
-	  <%= result.value %>
+	  <%= result.resultValue %>
 	</p>
 
 	<p>
@@ -45,7 +45,7 @@
 	  <%= result.unit %>
 	</p>
 	<%= link_to 'Editar', edit_result_path(result) %> |
-	<%= link_to 'Voltar', results_path %> |
+	<!--<%= link_to 'Voltar', competitions_path %> |-->
 	<%= link_to 'Apagar', result, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %>
 <% end %>
 
@@ -58,12 +58,17 @@
 	</div>
 	<div class="field">
 	    <%= f.label "Valor" %><br>
-	    <%= f.text_field :value %>
+	    <%= f.text_field :resultValue %>
 	</div>
 	<div class="field">
-	    <%= f.label "Unidade (use s ou m)" %><br>
+	    <%= f.label "Unidade" %><br>
 	    <!--<%= f.text_field :unit %>-->
-	    <%= f.select :unit, ["s", "u"] %>
+	    <!--<%= f.select :unit, ["s", "m"] %>-->
+	    <% if @competition.sportType == "corrida" %>
+	    	<%= f.text_field :unit, :value => "s", :readonly => true %>
+	    <% else %>
+	    	<%= f.text_field :unit, :value => "m", :readonly => true %>
+	    <% end %>
 	</div>
 	<div class="actions">
 	    <%= f.submit "Gravar Resultado" %>

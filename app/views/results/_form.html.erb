@@ -17,12 +17,12 @@
   </div>
   <div class="field">
     <%= f.label "Valor" %><br>
-    <%= f.text_field :value %>
+    <%= f.text_field :resultValue %>
   </div>
   <div class="field">
     <%= f.label "Unidade (use s ou m)" %><br>
     <!--<%= f.text_field :unit %>-->
-    <%= f.select :unit, ["s", "u"] %>
+    <%= f.select :unit, ["s", "m"] %>
   </div>
   <div class="actions">
     <%= f.submit "Gravar Resultado" %>

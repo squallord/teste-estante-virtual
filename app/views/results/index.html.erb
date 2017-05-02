@@ -16,7 +16,7 @@
     <% @results.each do |result| %>
       <tr>
         <td><%= result.athlete %></td>
-        <td><%= result.value %></td>
+        <td><%= result.resultValue %></td>
         <td><%= result.unit %></td>
         <td><%= link_to 'Mostrar', result %></td>
         <td><%= link_to 'Editar', edit_result_path(result) %></td>
