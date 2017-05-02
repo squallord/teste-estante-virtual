@@ -11,19 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Título" %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label "Tipo" %><br>
-    <!--<%= f.text_field :sportType %>-->
-    <%= f.select :sportType, ["corrida", "dardo"] %>
-  </div>
-  <div class="field">
-    <%= f.label "Início" %><br>
-    <%= f.datetime_select :start %>
-  </div>
+  <h2><%= "Competição: #{@competition.title}" %></h2>
+  <% if params[:action] == "edit" %>
+    <div class="field">
+      <%= f.label "Título" %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label "Tipo" %><br>
+      <!--<%= f.text_field :sportType %>-->
+      <%= f.select :sportType, ["corrida", "dardo"] %>
+    </div>
+    <div class="field">
+      <%= f.label "Início" %><br>
+      <%= f.datetime_select :start %>
+    </div>
+  <% end %>
+  <%#= params.to_s %>
+  <%#= params[:action] %>
+  <% if params[:action] == "finalize" %>
+    <div class="field">
+      <%= f.label "Fim" %><br>
+      <%= f.datetime_select :end %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit "Gravar Competição" %>
   </div>

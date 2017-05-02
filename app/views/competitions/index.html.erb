@@ -28,6 +28,8 @@
         
         <td><%= link_to 'Mostrar', competition %></td>
         <td><%= link_to 'Editar', edit_competition_path(competition) %></td>
+        <td><%= link_to 'Finalizar', competition_finalize_path(competition) %></td>
+        <!--<td><%#= params.to_s %></td>-->
         <td><%= link_to 'Apagar', competition, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %></td>
       </tr>
     <% end %>

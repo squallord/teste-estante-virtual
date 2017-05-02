@@ -51,6 +51,20 @@ class CompetitionsController < ApplicationController
     end
   end
 
+  def finalize
+    #byebug
+    @competition = Competition.find(params[:competition_id])
+    #respond_to do |format|
+    #  if @competition.finalize(competition_params)
+    #    format.html { redirect_to @competition, notice: 'Competition was successfully finalized.' }
+    #    format.json { render :show, status: :ok, location: @competition }
+    #  else
+    #    format.html { render :edit }
+    #    format.json { render json: @competition.errors, status: :unprocessable_entity }
+    #  end
+    #end
+  end
+
   # DELETE /competitions/1
   # DELETE /competitions/1.json
   def destroy

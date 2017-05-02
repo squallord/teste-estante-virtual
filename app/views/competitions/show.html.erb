@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= "Competição: #{@competition.title}" %></h2>
 <p>
   <strong>Título:</strong>
   <%= @competition.title %>
@@ -45,7 +46,7 @@
 	  <%= result.unit %>
 	</p>
 	<%= link_to 'Editar', edit_result_path(result) %> |
-	<!--<%= link_to 'Voltar', competitions_path %> |-->
+	<%# link_to 'Voltar', competitions_path %>
 	<%= link_to 'Apagar', result, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %>
 <% end %>
 
@@ -62,8 +63,6 @@
 	</div>
 	<div class="field">
 	    <%= f.label "Unidade" %><br>
-	    <!--<%= f.text_field :unit %>-->
-	    <!--<%= f.select :unit, ["s", "m"] %>-->
 	    <% if @competition.sportType == "corrida" %>
 	    	<%= f.text_field :unit, :value => "s", :readonly => true %>
 	    <% else %>
