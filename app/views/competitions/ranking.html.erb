@@ -1,0 +1,12 @@
+<h1>Ranking</h1>
+<h2><%= @competition.title %></h2>
+<% if @competition.sportType == "corrida" %>
+	<% @list = @competition.results.order("results.resultValue ASC") %>
+	<% count = 1 %>
+	<% @list.each do |result| %>
+		<p><%= "#{count.to_s} - #{result.athlete} - #{result.resultValue}#{result.unit}" %></p>
+		<% count = count + 1 %>
+	<% end %>
+<% end %>
+<br>
+<%= link_to 'Voltar', competitions_path %>

@@ -19,7 +19,6 @@
     </div>
     <div class="field">
       <%= f.label "Tipo" %><br>
-      <!--<%= f.text_field :sportType %>-->
       <%= f.select :sportType, ["corrida", "dardo"] %>
     </div>
     <div class="field">
@@ -27,14 +26,14 @@
       <%= f.datetime_select :start %>
     </div>
   <% end %>
-  <%#= params.to_s %>
-  <%#= params[:action] %>
+  
   <% if params[:action] == "finalize" %>
     <div class="field">
       <%= f.label "Fim" %><br>
       <%= f.datetime_select :end %>
     </div>
   <% end %>
+  
   <div class="actions">
     <%= f.submit "Gravar Competição" %>
   </div>

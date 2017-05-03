@@ -54,15 +54,11 @@ class CompetitionsController < ApplicationController
   def finalize
     #byebug
     @competition = Competition.find(params[:competition_id])
-    #respond_to do |format|
-    #  if @competition.finalize(competition_params)
-    #    format.html { redirect_to @competition, notice: 'Competition was successfully finalized.' }
-    #    format.json { render :show, status: :ok, location: @competition }
-    #  else
-    #    format.html { render :edit }
-    #    format.json { render json: @competition.errors, status: :unprocessable_entity }
-    #  end
-    #end
+  end
+
+  def ranking
+    @competition = Competition.find(params[:competition_id])
+    #@result = @competition.results.create(result_params)
   end
 
   # DELETE /competitions/1
@@ -84,5 +80,10 @@ class CompetitionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def competition_params
       params.require(:competition).permit(:title, :sportType, :start, :end)
+    end
+
+    def result_params
+      params.require(:result).permit(:athlete, :resultValue, :unit)
+      #params.require(:result).permit!
     end
 end

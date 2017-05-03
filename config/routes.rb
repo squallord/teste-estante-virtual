@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :competitions do
     resources :results
     get 'finalize' => 'competitions#finalize'
+    get 'ranking' => 'competitions#ranking'
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,8 +11,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'competitions#index'
-  # get 'competitions/finalize'
-  # get 'competitions#finalize'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
