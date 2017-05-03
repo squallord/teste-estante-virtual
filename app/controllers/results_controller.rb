@@ -22,27 +22,32 @@ class ResultsController < ApplicationController
   end
 
   # POST /results
-  # POST /results.json
   def create
     @competition = Competition.find(params[:competition_id])
-    @result = @competition.results.create(result_params)
-    redirect_to competition_path(@competition)
-
-    #@result = Result.new(result_params)
-    #respond_to do |format|
-    #  if @result.save
-    #    format.html { redirect_to @result, notice: 'Result was successfully created.' }
-    #    format.json { render :show, status: :created, location: @result }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @result.errors, status: :unprocessable_entity }
-    #  end
-    #end
+    if @competition.sportType == "dardo"
+      counter = @competition.results.where("athlete = '#{result_params[:athlete]}'").count
+      if counter < 3
+        noticeMessage = 'Lançamento adicionado com sucesso!'
+        @result = @competition.results.create(result_params)
+      else
+        noticeMessage = 'Um mesmo atleta não pode realizar mais do que 3 lançamentos!'
+      end
+    elsif @competition.sportType == "corrida"
+      counter = @competition.results.where("athlete = '#{result_params[:athlete]}'").count
+      if counter == 0
+        noticeMessage = 'Resultado adicionado com sucesso!'
+        @result = @competition.results.create(result_params)
+      else
+        noticeMessage = 'Um mesmo atleta não pode participar de uma mesma corrida mais do que 1 vez!'
+      end
+    end
+    redirect_to competition_path(@competition), notice: noticeMessage
   end
 
   # PATCH/PUT /results/1
   # PATCH/PUT /results/1.json
   def update
+    #@competition = Competition.find(params[:competition_id])
     respond_to do |format|
       if @result.update(result_params)
         format.html { redirect_to @result, notice: 'Result was successfully updated.' }

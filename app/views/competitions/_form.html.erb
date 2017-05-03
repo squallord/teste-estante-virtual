@@ -12,7 +12,7 @@
   <% end %>
 
   <h2><%= "Competição: #{@competition.title}" %></h2>
-  <% if params[:action] == "edit" %>
+  <% if params[:action] == "edit" || params[:action] == "new" %>
     <div class="field">
       <%= f.label "Título" %><br>
       <%= f.text_field :title %>

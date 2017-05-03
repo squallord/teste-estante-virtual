@@ -2,27 +2,27 @@
 
 <h2><%= "Competição: #{@competition.title}" %></h2>
 <p>
-  <strong>Título:</strong>
-  <%= @competition.title %>
+  	<strong>Título:</strong>
+  	<%= @competition.title %>
 </p>
 
 <p>
-  <strong>Tipo:</strong>
-  <%= @competition.sportType %>
+  	<strong>Tipo:</strong>
+  	<%= @competition.sportType %>
 </p>
 
 <p>
-  <strong>Início:</strong>
-  <%= @competition.start %>
+  	<strong>Início:</strong>
+  	<%= @competition.start %>
 </p>
 
 <p>
-  <strong>Fim:</strong>
-  <% if not @competition.end.nil? %>
-  	<%= @competition.end %>
-  <% else %>
-  	<%= "em curso..." %>
-  <% end %>
+	<strong>Fim:</strong>
+	<% if not @competition.end.nil? %>
+		<%= @competition.end %>
+	<% else %>
+		<%= "em curso..." %>
+	<% end %>
 </p>
 
 <%= link_to 'Editar', edit_competition_path(@competition) %> |
@@ -50,8 +50,24 @@
 <% end %>
 
 <br>
+
 <h2>Adicionar Resultado</h2>
 <%= form_for ([@competition, @competition.results.build]) do |f| %>
+
+
+	<% if @competition.results.build.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@competition.results.build.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+		  	<ul>
+		  	<% @competition.results.build.errors.full_messages.each do |message| %>
+		    	<li><%= message %></li>
+		  	<% end %>
+		  	</ul>
+		</div>
+	<% end %>
+	
+
 	<div class="field">
 	    <%= f.label "Atleta" %><br>
 	    <%= f.text_field :athlete %>
