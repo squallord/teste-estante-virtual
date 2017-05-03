@@ -1,12 +1,44 @@
 <h1>Ranking</h1>
 <h2><%= @competition.title %></h2>
+
+<% if not @competition.end.nil? %>
+	<strong><%= "Estado: encerrada" %></strong>
+<% else %>
+	<strong><%= "Estado: em curso..." %></strong>
+<% end %>
+
 <% if @competition.sportType == "corrida" %>
-	<% @list = @competition.results.order("results.resultValue ASC") %>
+	<% list = @competition.results.order("results.resultValue ASC") %>
 	<% count = 1 %>
-	<% @list.each do |result| %>
-		<p><%= "#{count.to_s} - #{result.athlete} - #{result.resultValue}#{result.unit}" %></p>
+	<p>
+	<% list.each do |result| %>
+		<%= "#{count.to_s} - #{result.athlete} - #{result.resultValue}#{result.unit}" %><br>
 		<% count = count + 1 %>
 	<% end %>
+	</p>
+<% elsif @competition.sportType == "dardo" %>
+	<% list = @competition.results.order("results.resultValue DESC") %>
+	<% templist = [] %>
+	<% count = 1 %>
+	<% list.each do |result| %>
+		<% templist.push([[result.athlete], [result.resultValue], [result.unit]]) %>
+	<% end %>
+	<br>
+	<% templist = templist.uniq { |e| e.first } %>
+	<p>
+	<% templist.each do |item| %>
+		<%= "#{count} - " %>
+		<% item.each do |elem| %>
+			<% if elem.equal? item.last %>
+				<%= "#{elem[0]}" %>
+			<% else %>
+				<%= "#{elem[0]} - " %>
+			<% end %>
+		<% end %>
+		<% count = count + 1 %>
+		<br>
+	<% end %>
+	</p>
 <% end %>
-<br>
+
 <%= link_to 'Voltar', competitions_path %>
