@@ -1,5 +1,7 @@
-<h1>Editing Result</h1>
-
-<%= render 'form' %>
-
+<% if @competition.end.nil? %>
+	<h1>Editing Result</h1>
+	<%= render 'form' %>
+<% else %>
+	<h2><%= "Competição #{@competition.title} encerrada..." %></h2>
+<% end %>
 <%= link_to 'Voltar', request.referer.present? ? request.referer : default_path %>

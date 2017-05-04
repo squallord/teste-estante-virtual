@@ -17,14 +17,16 @@
       <%= f.label "Título" %><br>
       <%= f.text_field :title %>
     </div>
-    <div class="field">
-      <%= f.label "Tipo" %><br>
-      <%= f.select :sportType, ["corrida", "dardo"] %>
-    </div>
-    <div class="field">
-      <%= f.label "Início" %><br>
-      <%= f.datetime_select :start %>
-    </div>
+    <% if params[:action] == "new" %>
+      <div class="field">
+        <%= f.label "Tipo" %><br>
+        <%= f.select :sportType, ["corrida", "dardo"] %>
+      </div>
+      <div class="field">
+        <%= f.label "Início" %><br>
+        <%= f.datetime_select :start %>
+      </div>
+    <% end %>
   <% end %>
   
   <% if params[:action] == "finalize" %>

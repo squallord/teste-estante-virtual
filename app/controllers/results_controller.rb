@@ -5,6 +5,7 @@ class ResultsController < ApplicationController
   # GET /results.json
   def index
     @results = Result.all
+    @competitions = Competition.all
   end
 
   # GET /results/1
@@ -19,38 +20,54 @@ class ResultsController < ApplicationController
 
   # GET /results/1/edit
   def edit
+    @competition = Competition.find(@result.competition_id)
   end
 
   # POST /results
+  # POST /results.json
   def create
     @competition = Competition.find(params[:competition_id])
     if @competition.sportType == "dardo"
       counter = @competition.results.where("athlete = '#{result_params[:athlete]}'").count
       if counter < 3
-        noticeMessage = 'Lançamento adicionado com sucesso!'
         @result = @competition.results.create(result_params)
+        respond_to do |format|
+          if @result.save(result_params)
+            format.html { redirect_to competition_path(@competition), notice: 'Lançamento adicionado com sucesso!' }
+            format.json { render :show, status: :ok, location: @result }
+          else
+            format.html { render :new }
+            format.json { render json: @result.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        noticeMessage = 'Um mesmo atleta não pode realizar mais do que 3 lançamentos!'
+        redirect_to competition_path(@competition), notice: 'Um mesmo atleta não pode realizar mais do que 3 lançamentos!'
       end
     elsif @competition.sportType == "corrida"
       counter = @competition.results.where("athlete = '#{result_params[:athlete]}'").count
       if counter == 0
-        noticeMessage = 'Resultado adicionado com sucesso!'
         @result = @competition.results.create(result_params)
+        respond_to do |format|
+          if @result.save(result_params)
+            format.html { redirect_to competition_path(@competition), notice: 'Resultado adicionado com sucesso!' }
+            format.json { render :show, status: :ok, location: @result }
+          else
+            format.html { render :new }
+            format.json { render json: @result.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        noticeMessage = 'Um mesmo atleta não pode participar de uma mesma corrida mais do que 1 vez!'
+        redirect_to competition_path(@competition), notice: 'Um mesmo atleta não pode participar de uma mesma corrida mais do que 1 vez!'
       end
     end
-    redirect_to competition_path(@competition), notice: noticeMessage
   end
 
   # PATCH/PUT /results/1
   # PATCH/PUT /results/1.json
   def update
-    #@competition = Competition.find(params[:competition_id])
     respond_to do |format|
       if @result.update(result_params)
-        format.html { redirect_to @result, notice: 'Result was successfully updated.' }
+        format.html { redirect_to @result, notice: "O resultado do atleta #{@result.athlete} foi atualizado." }
         format.json { render :show, status: :ok, location: @result }
       else
         format.html { render :edit }
@@ -64,7 +81,7 @@ class ResultsController < ApplicationController
   def destroy
     @result.destroy
     respond_to do |format|
-      format.html { redirect_to competitions_url, notice: 'Result was successfully destroyed.' }
+      format.html { redirect_to competition_path(@result.competition_id), notice: "Resultado do atleta #{@result.athlete} foi apagado." }
       format.json { head :no_content }
     end
   end
@@ -78,6 +95,5 @@ class ResultsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
       params.require(:result).permit(:athlete, :resultValue, :unit)
-      #params.require(:result).permit!
     end
 end

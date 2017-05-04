@@ -25,7 +25,7 @@
 	<% end %>
 </p>
 
-<%= link_to 'Editar', edit_competition_path(@competition) %> |
+<%= link_to_if @competition.end.nil?, 'Editar', edit_competition_path(@competition) %> |
 <%= link_to 'Voltar', competitions_path %>
 
 <br>
@@ -45,46 +45,15 @@
 	  <strong>Unidade:</strong>
 	  <%= result.unit %>
 	</p>
-	<%= link_to 'Editar', edit_result_path(result) %> |
-	<%= link_to 'Apagar', result, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %>
+	
+	<%= link_to_if @competition.end.nil?, 'Editar', edit_result_path(result) %> |
+	<%= link_to_if @competition.end.nil?, 'Apagar', result, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %>
+	
 <% end %>
 
-<br>
-
-<h2>Adicionar Resultado</h2>
-<%= form_for ([@competition, @competition.results.build]) do |f| %>
-
-
-	<% if @competition.results.build.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@competition.results.build.errors.count, "error") %> prohibited this result from being saved:</h2>
-
-		  	<ul>
-		  	<% @competition.results.build.errors.full_messages.each do |message| %>
-		    	<li><%= message %></li>
-		  	<% end %>
-		  	</ul>
-		</div>
-	<% end %>
-	
-
-	<div class="field">
-	    <%= f.label "Atleta" %><br>
-	    <%= f.text_field :athlete %>
-	</div>
-	<div class="field">
-	    <%= f.label "Valor" %><br>
-	    <%= f.text_field :resultValue %>
-	</div>
-	<div class="field">
-	    <%= f.label "Unidade" %><br>
-	    <% if @competition.sportType == "corrida" %>
-	    	<%= f.text_field :unit, :value => "s", :readonly => true %>
-	    <% else %>
-	    	<%= f.text_field :unit, :value => "m", :readonly => true %>
-	    <% end %>
-	</div>
-	<div class="actions">
-	    <%= f.submit "Gravar Resultado" %>
-	</div>
+<% if @competition.end.nil? %>
+	<h2>Adicionar Resultado</h2>
+	<%= render 'results/form' %>
+<% else %>
+	<h2>Competição encerrada...</h2>
 <% end %>

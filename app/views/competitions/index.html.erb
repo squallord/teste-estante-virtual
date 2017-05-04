@@ -27,7 +27,7 @@
         <% end %>
         
         <td><%= link_to 'Mostrar', competition %></td>
-        <td><%= link_to 'Editar', edit_competition_path(competition) %></td>
+        <td><%= link_to_if competition.end.nil?, 'Editar', edit_competition_path(competition) %></td>
         <td><%= link_to_if competition.end.nil?, 'Finalizar', competition_finalize_path(competition) %>
         <td><%= link_to 'Ranking', competition_ranking_path(competition) %></td>
         <td><%= link_to 'Apagar', competition, method: :delete, data: { confirm: 'Deseja realmente apagar?' } %></td>
@@ -38,4 +38,5 @@
 
 <br>
 
-<%= link_to 'Nova Competição', new_competition_path %>
+<%= link_to 'Nova Competição', new_competition_path %> |
+<%= link_to 'Ver Resultados', results_path %>
