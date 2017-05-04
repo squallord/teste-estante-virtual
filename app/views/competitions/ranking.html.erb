@@ -2,43 +2,63 @@
 <h2><%= @competition.title %></h2>
 
 <% if not @competition.end.nil? %>
-	<strong><%= "Estado: encerrada" %></strong>
+	<h2><%= "Competição Encerrada" %></h2>
 <% else %>
-	<strong><%= "Estado: em curso..." %></strong>
+	<h2><%= "Competição em Curso" %></h2>
 <% end %>
 
+<% list = [] %>
 <% if @competition.sportType == "corrida" %>
 	<% list = @competition.results.order("results.resultValue ASC") %>
-	<% count = 1 %>
-	<p>
+	<% templist = [] %>
 	<% list.each do |result| %>
-		<%= "#{count.to_s} - #{result.athlete} - #{result.resultValue}#{result.unit}" %><br>
+		<% templist.push([[], [result.athlete], [result.resultValue], [result.unit]]) %>
+	<% end %>
+	<% list = templist %>
+	<% count = 1 %>
+	<% list.each do |item| %>
+		<% item[0] = [count] %>
 		<% count = count + 1 %>
 	<% end %>
-	</p>
+
 <% elsif @competition.sportType == "dardo" %>
 	<% list = @competition.results.order("results.resultValue DESC") %>
 	<% templist = [] %>
-	<% count = 1 %>
 	<% list.each do |result| %>
-		<% templist.push([[result.athlete], [result.resultValue], [result.unit]]) %>
+		<% templist.push([[], [result.athlete], [result.resultValue], [result.unit]]) %>
 	<% end %>
-	<br>
-	<% templist = templist.uniq { |e| e.first } %>
-	<p>
-	<% templist.each do |item| %>
-		<%= "#{count} - " %>
-		<% item.each do |elem| %>
-			<% if elem.equal? item.last %>
-				<%= "#{elem[0]}" %>
-			<% else %>
-				<%= "#{elem[0]} - " %>
-			<% end %>
-		<% end %>
+	<% templist = templist.uniq { |e| e.second } %>
+	<% list = templist %>
+	<% count = 1 %>
+	<% list.each do |item| %>
+		<% item[0] = [count] %>
 		<% count = count + 1 %>
-		<br>
 	<% end %>
-	</p>
+
 <% end %>
 
-<%= link_to 'Voltar', competitions_path %>
+<% if not list.empty? %>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Posição</th>
+	      <th>Atleta</th>
+	      <th>Resultado</th>
+	      <th>Unidade</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% list.each do |item| %>
+	      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	        <% item.each do |elem| %>
+	        	<td><%= elem[0] %></td>
+	        <% end %>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<h2><%= link_to 'Voltar', competitions_path %></h2>

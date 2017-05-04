@@ -13,3 +13,133 @@
  *= require_tree .
  *= require_self
  */
+h1
+{
+	margin: 20px auto 20px;
+	text-align: center;
+}
+
+h2
+{
+	margin: 20px auto 20px;
+	text-align: center;
+}
+
+a
+{
+	text-decoration: none;
+
+	&:hover
+	{
+		color: #007EBD;
+		background-color: rgba(0, 0, 0, 0);
+	}
+
+	&:focus
+	{
+		outline: none;
+	}
+
+	&:visited
+	{
+		/*color: black;*/
+	}
+}
+
+body
+{
+	margin: 0;
+	background-color: #5D8AA8;
+}
+
+div#wrapper
+{
+	margin: auto;
+	background-color: white;
+	width: 1000px;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+header
+{
+	display: block;
+	padding: 10px 10px 30px 10px;
+}
+
+.websiteTitle
+{
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	font-size: 50px;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 90px;
+}
+
+#horizontal-nav
+{
+	display: block;
+	padding: 10px 20px 10px 10px;
+	background-color: black;
+
+	a
+	{
+		text-decoration: none;
+		padding: 0 0 0 20px;
+		font-weight: bold;
+		color: white;
+		font-size: 20px;
+
+		&:hover
+		{
+			background-color: rgba(0, 0, 0, 0);
+			color: #007EBD;
+		}
+	}
+}
+
+main
+{
+	padding: 10px 20px 20px 20px;
+}
+
+table
+{
+	margin: auto;
+	border-collapse: collapse;
+}
+
+table tr td
+{
+	padding: 10px;
+}
+
+thead
+{
+	text-align: left;
+	background-color: #00308F;
+	color: #FFF;
+}
+
+thead th
+{
+	padding: 10px;
+}
+
+.list_line_even
+{
+	background-color: #FAEBD7;
+}
+
+.list_line_odd
+{
+	background-color: #FEFEFA;
+}
+
+.container-form
+{
+	margin: auto;
+	text-align: center;
+}

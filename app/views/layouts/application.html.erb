@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TesteEstanteVirtual</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+		<title>Teste Estante Virtual</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<%= link_to "TESTE ESTANTE VIRTUAL", {:controller => "competitions", :action => "index"}, {:class => "websiteTitle"} %>
+			</header>
+			<nav id="horizontal-nav">
+				<p>
+					<%= link_to "Competições", {:controller => "competitions", :action => "index"} %>
+					<%= link_to "Resultados", {:controller => "results", :action => "index"} %>
+				</p>
+			</nav>
+			<%= yield %>
+		</div>
+	</body>
 </html>

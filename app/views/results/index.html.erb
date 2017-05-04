@@ -17,8 +17,8 @@
   <tbody>
     <% @results.each do |result| %>
       <% @competition = Competition.find(result.competition_id) %>
-      <tr>
-        <td><%= result.athlete %></td>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td><%= link_to "#{result.athlete}", result %></td>
         <td><%= result.resultValue %></td>
         <td><%= result.unit %></td>
         <td><%= @competition.title %></td>
@@ -35,6 +35,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Voltar', competitions_path %>
+<h2><%= link_to 'Voltar', competitions_path %><h2>
