@@ -1,35 +1,37 @@
-<div class="container-form">
-  <%= form_for ([@competition, @result]) do |f| %>
-    <% if @result.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
+<div class="wrapper-form">
+  <div class="container-form">
+    <%= form_for ([@competition, @result]) do |f| %>
+      <% if @result.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
 
-        <ul>
-        <% @result.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
+          <ul>
+          <% @result.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="field">
+          <%= f.label "Atleta" %><br>
+          <%= f.text_field :athlete %>
+      </div>
+      <div class="field">
+          <%= f.label "Valor" %><br>
+          <%= f.text_field :resultValue %>
+      </div>
+      <div class="field">
+          <%= f.label "Unidade" %><br>
+          <% if @competition.sportType == "corrida" %>
+            <%= f.text_field :unit, :value => "s", :readonly => true %>
+          <% else %>
+            <%= f.text_field :unit, :value => "m", :readonly => true %>
+          <% end %>
+      </div>
+      <div class="actions">
+          <%= f.submit "Gravar Resultado" %>
       </div>
     <% end %>
-    
-    <div class="field">
-        <%= f.label "Atleta" %><br>
-        <%= f.text_field :athlete %>
-    </div>
-    <div class="field">
-        <%= f.label "Valor" %><br>
-        <%= f.text_field :resultValue %>
-    </div>
-    <div class="field">
-        <%= f.label "Unidade" %><br>
-        <% if @competition.sportType == "corrida" %>
-          <%= f.text_field :unit, :value => "s", :readonly => true %>
-        <% else %>
-          <%= f.text_field :unit, :value => "m", :readonly => true %>
-        <% end %>
-    </div>
-    <div class="actions">
-        <%= f.submit "Gravar Resultado" %>
-    </div>
-  <% end %>
+  </div>
 </div>

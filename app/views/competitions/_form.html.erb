@@ -1,44 +1,45 @@
-<div class="container-form">
-  <%= form_for(@competition) do |f| %>
-    <% if @competition.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+<div class="wrapper-form">
+  <div class="container-form">
+    <%= form_for(@competition) do |f| %>
+      <% if @competition.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
 
-        <ul>
-        <% @competition.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <h2><%= "Competição: #{@competition.title}" %></h2>
-    <% if params[:action] == "edit" || params[:action] == "new" %>
-      <div class="field">
-        <%= f.label "Título" %><br>
-        <%= f.text_field :title %>
-      </div>
-      <% if params[:action] == "new" %>
-        <div class="field">
-          <%= f.label "Tipo" %><br>
-          <%= f.select :sportType, ["corrida", "dardo"] %>
-        </div>
-        <div class="field">
-          <%= f.label "Início" %><br>
-          <%= f.datetime_select :start %>
+          <ul>
+          <% @competition.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
       <% end %>
-    <% end %>
-    
-    <% if params[:action] == "finalize" %>
-      <div class="field">
-        <%= f.label "Fim" %><br>
-        <%= f.datetime_select :end %>
+      
+      <% if params[:action] == "edit" || params[:action] == "new" || params[:action] == "create" %>
+        <div class="field">
+          <%= f.label "Título" %><br>
+          <%= f.text_field :title %>
+        </div>
+        <% if params[:action] == "new" || params[:action] == "create" %>
+          <div class="field">
+            <%= f.label "Tipo" %><br>
+            <%= f.select :sportType, ["corrida", "dardo"] %>
+          </div>
+          <div class="field">
+            <%= f.label "Início" %><br>
+            <%= f.datetime_select :start %>
+          </div>
+        <% end %>
+      <% end %>
+      
+      <% if params[:action] == "finalize" %>
+        <div class="field">
+          <%= f.label "Fim" %><br>
+          <%= f.datetime_select :end %>
+        </div>
+      <% end %>
+      
+      <div class="actions">
+        <%= f.submit "Gravar Competição" %>
       </div>
     <% end %>
-    
-    <div class="actions">
-      <%= f.submit "Gravar Competição" %>
-    </div>
-  <% end %>
+  </div>
 </div>

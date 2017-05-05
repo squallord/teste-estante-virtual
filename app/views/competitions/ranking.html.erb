@@ -15,11 +15,6 @@
 		<% templist.push([[], [result.athlete], [result.resultValue], [result.unit]]) %>
 	<% end %>
 	<% list = templist %>
-	<% count = 1 %>
-	<% list.each do |item| %>
-		<% item[0] = [count] %>
-		<% count = count + 1 %>
-	<% end %>
 
 <% elsif @competition.sportType == "dardo" %>
 	<% list = @competition.results.order("results.resultValue DESC") %>
@@ -29,15 +24,16 @@
 	<% end %>
 	<% templist = templist.uniq { |e| e.second } %>
 	<% list = templist %>
+
+<% end %>
+
+<% if not list.empty? %>
 	<% count = 1 %>
 	<% list.each do |item| %>
 		<% item[0] = [count] %>
 		<% count = count + 1 %>
 	<% end %>
-
-<% end %>
-
-<% if not list.empty? %>
+	
 	<table>
 	  <thead>
 	    <tr>
@@ -45,7 +41,6 @@
 	      <th>Atleta</th>
 	      <th>Resultado</th>
 	      <th>Unidade</th>
-	      <th colspan="3"></th>
 	    </tr>
 	  </thead>
 

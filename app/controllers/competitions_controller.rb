@@ -29,7 +29,7 @@ class CompetitionsController < ApplicationController
 
     respond_to do |format|
       if @competition.save
-        format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
+        format.html { redirect_to @competition, notice: 'A competição foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @competition }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CompetitionsController < ApplicationController
   def update
     respond_to do |format|
       if @competition.update(competition_params)
-        format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
+        format.html { redirect_to @competition, notice: 'A competição foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @competition }
       else
         format.html { render :edit }
@@ -65,9 +65,13 @@ class CompetitionsController < ApplicationController
   # DELETE /competitions/1
   # DELETE /competitions/1.json
   def destroy
+    @results = @competition.results
+    @results.each do |result|
+      result.destroy
+    end
     @competition.destroy
     respond_to do |format|
-      format.html { redirect_to competitions_url, notice: 'Competition was successfully destroyed.' }
+      format.html { redirect_to competitions_url, notice: 'A competição foi apagada com sucesso.' }
       format.json { head :no_content }
     end
   end

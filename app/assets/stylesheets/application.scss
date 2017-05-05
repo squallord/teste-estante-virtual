@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+$line-even-color: #B9E5F7;
+$line-odd-color: #FEFEFA;
+$transpatent-color: rgba(0, 0, 0, 0);
+$body-background-color: #5D8AA8;
+$link-hover-color: #007EBD;
+$table-header-color: #FFF;
+$table-header-background-color: #00308F;
+$title-color: #295AAA;
+
+
 h1
 {
 	margin: 20px auto 20px;
@@ -29,12 +39,6 @@ a
 {
 	text-decoration: none;
 
-	&:hover
-	{
-		color: #007EBD;
-		background-color: rgba(0, 0, 0, 0);
-	}
-
 	&:focus
 	{
 		outline: none;
@@ -42,14 +46,20 @@ a
 
 	&:visited
 	{
-		/*color: black;*/
+		color: black;
+	}
+
+	&:hover
+	{
+		color: $link-hover-color;
+		background-color: $transpatent-color;
 	}
 }
 
 body
 {
 	margin: 0;
-	background-color: #5D8AA8;
+	background-color: $body-background-color;
 }
 
 div#wrapper
@@ -63,6 +73,22 @@ div#wrapper
 
 header
 {
+	a
+	{
+		color: $title-color;
+
+		&:visited
+		{
+			color: $title-color;
+		}
+
+		&:hover
+		{
+			color: $link-hover-color;
+			background-color: $transpatent-color;
+		}
+	}
+
 	display: block;
 	padding: 10px 10px 30px 10px;
 }
@@ -102,7 +128,7 @@ header
 
 main
 {
-	padding: 10px 20px 20px 20px;
+	/*padding: 10px 20px 20px 20px;*/
 }
 
 table
@@ -119,8 +145,8 @@ table tr td
 thead
 {
 	text-align: left;
-	background-color: #00308F;
-	color: #FFF;
+	background-color: $table-header-background-color;
+	color: $table-header-color;
 }
 
 thead th
@@ -130,16 +156,24 @@ thead th
 
 .list_line_even
 {
-	background-color: #FAEBD7;
+	background-color: $line-even-color;
 }
 
 .list_line_odd
 {
-	background-color: #FEFEFA;
+	background-color: $line-odd-color;
 }
 
 .container-form
 {
-	margin: auto;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+.wrapper-form
+{
+	display: block;
 	text-align: center;
 }

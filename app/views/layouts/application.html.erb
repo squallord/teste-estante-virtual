@@ -17,7 +17,9 @@
 					<%= link_to "Resultados", {:controller => "results", :action => "index"} %>
 				</p>
 			</nav>
-			<%= yield %>
+			<main id="content">
+				<%= yield %>
+			</main>
 		</div>
 	</body>
 </html>
