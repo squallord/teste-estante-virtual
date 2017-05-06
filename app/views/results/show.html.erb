@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
+<h1>Mostrando Resultado</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Atleta</th>
+      <th>Valor</th>
+      <th>Unidade</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Atleta:</strong>
-  <%= @result.athlete %>
-</p>
+  <tbody>
+  	<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  	  <td><%= @result.athlete %></td>
+  	  <td><%= @result.resultValue %></td>
+  	  <td><%= @result.unit %></td>
+  	</tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Valor:</strong>
-  <%= @result.resultValue %>
-</p>
-
-<p>
-  <strong>Unidade:</strong>
-  <%= @result.unit %>
-</p>
-
-<%= link_to 'Editar', edit_result_path(@result) %> |
-<%= link_to 'Voltar', "#{competitions_path}/#{@result.competition_id}" %>
+<h2><%= link_to 'Editar', edit_result_path(@result) %> |
+<%= link_to 'Voltar', "#{competitions_path}/#{@result.competition_id}" %></h2>
