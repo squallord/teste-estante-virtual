@@ -2,7 +2,7 @@ class CreateResults < ActiveRecord::Migration
   def change
     create_table :results do |t|
       t.string :athlete
-      t.float :result
+      t.float :value
       t.string :unit
       t.timestamps null: false
     end

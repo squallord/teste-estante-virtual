@@ -13,22 +13,25 @@
 
 ActiveRecord::Schema.define(version: 20170502131542) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "competitions", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "sportType",  limit: 255
+    t.string   "title"
+    t.string   "sportType"
     t.datetime "start"
     t.datetime "end"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "results", force: :cascade do |t|
-    t.string   "athlete",        limit: 255
-    t.float    "resultValue",    limit: 24
-    t.string   "unit",           limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "competition_id", limit: 4
+    t.string   "athlete"
+    t.float    "resultValue"
+    t.string   "unit"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "competition_id"
   end
 
   add_index "results", ["competition_id"], name: "index_results_on_competition_id", using: :btree
