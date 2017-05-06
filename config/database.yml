@@ -18,9 +18,9 @@ default: &default
   #password: password
   username: ermitao
   password: password
-  host: localhost
+  #host: localhost
   #socket: /var/run/mysqld/mysqld.sock
-  socket: /var/run/postgresql
+  #socket: /var/run/postgresql
 
 development:
   <<: *default
