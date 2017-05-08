@@ -45,7 +45,7 @@ Rode a aplicação [**aqui**](https://guarded-meadow-23996.herokuapp.com/) ou se
 	- Apagar -> deleta o resultado do banco de dados de resultados.
 
 ### Considerações Gerais:
-1. Usou-se Ruby on Rails pelo teste não limitar o uso de frameworks;
+1. Usou-se **Ruby on Rails** pelo teste não limitar o uso de frameworks;
 2. Usou-se o padrão de arquitetura **MVC** por não haver limitações quanto a isso enunciado do teste;
 3. Todas as competições e resultados associados podem ser vistos no formato mostrado no enunciado do teste pelos links [competitions.json](https://guarded-meadow-23996.herokuapp.com/competitions.json) e [results.json](https://guarded-meadow-23996.herokuapp.com/results.json);
 4. Por simplicidade, não se criou cadastro de usuário com login e senha para cadastrar competições e resultados;
