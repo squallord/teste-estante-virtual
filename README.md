@@ -2,7 +2,7 @@
 
 Rode a aplicação [**aqui**](https://guarded-meadow-23996.herokuapp.com/) ou se preferir siga os passos abaixo para rodá-la localmente.
 
-### Passos para Rodar a Aplicação *Localmente*:
+### Passos para Rodar a Aplicação **Localmente**:
 #### Instalação de Pacotes e Configurações Gerais:
 1. Abra o terminal e execute os comandos:
 	- sudo gem install bundler;
