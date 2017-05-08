@@ -4,21 +4,28 @@ Rode a aplicação [aqui](https://guarded-meadow-23996.herokuapp.com/) ou se pre
 
 ### Passos para Rodar a Aplicação:
 #### Instalação de Pacotes e Configurações Gerais:
-1. sudo gem install bundler
-2. sudo apt-get install libmysqlclient-dev
-3. sudo gem install mysql2
-4. bundle install (caso seja necessário)
-5. substitua o socket em config/database.yml pelo socket correspondente na conexão local de seu sistema
+1. Abra o terminal e execute os comandos:
+	- sudo gem install bundler;
+	- sudo apt-get install libmysqlclient-dev;
+	- sudo gem install mysql2.
+2. Na pasta da aplicação abra uma linha de comando e execute os comandos:
+	- bundle install (caso seja necessário).
+3. Na pasta config no arquivo database.yml:
+	- substitua o caminho do socket pelo socket correspondente na conexão local de seu sistema.
 
 #### Setup do MySQL:
-1. create database tev_development
-2. use tev_development
-3. grant all privileges on tev_development.* to 'tevadmin'@'localhost' identified by 'password'
+1. Abra o terminal e execute os comandos:
+	- mysql -u root -p
+2. No terminal mysql execute os comandos:
+	- use tev_development
+	- grant all privileges on tev_development.* to 'tevadmin'@'localhost' identified by 'password'
 
 #### Criação do Banco e Execução da Aplicação:
-1. abra uma linha de comando na pasta da aplicação digite: rake db:migrate
-2. rode o servidor local com: rails serve
-3. abra o navegador na porta que o servidor tiver aberto (ex: localhost:3000)
+1. Abra uma linha de comando na pasta da aplicação e execute os comandos:
+	- rake db:migrate
+	- rails serve (para rodar o servidor localmente)
+2. No navegador de internet:
+	- acesse a aplicação pela porta que o servidor tiver aberto (ex: localhost:3000)
 
 ---
 
