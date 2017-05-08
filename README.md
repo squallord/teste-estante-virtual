@@ -1,6 +1,6 @@
 # Teste prático da Estante Virtual
 
-Rode a aplicação [*aqui*](https://guarded-meadow-23996.herokuapp.com/) ou se preferir siga os passos abaixo para rodá-la localmente.
+Rode a aplicação [**aqui**](https://guarded-meadow-23996.herokuapp.com/) ou se preferir siga os passos abaixo para rodá-la localmente.
 
 ### Passos para Rodar a Aplicação *Localmente*:
 #### Instalação de Pacotes e Configurações Gerais:
@@ -32,11 +32,11 @@ Rode a aplicação [*aqui*](https://guarded-meadow-23996.herokuapp.com/) ou se p
 ### Instruções de Uso da Aplicação:
 1. No menu de navegação:
 	- Competições -> página inicial do site na qual mostram-se todas as competições;
-	- Resultados -> mostra-se uma página com resultados de todas as competições.
+	- Resultados -> exibe uma página com resultados de todas as competições.
 2. Na lista de competições:
-	- Mostrar -> mostra-se uma página com todos os resultados para a competição correspondente. Ao final desta página, é possível inserir um novo resultado caso a competição ainda não tenha sido encerrada;
-	- Editar -> mostra-se uma página com um formulário em que permite-se que o usuário altere apenas o nome da competição;
-	- Finalizar -> mostra-se uma página com um formulário que permite ao usuário finalizar a competição correspondente inserindo-se a data e horário em que a competição se encerra (não será pertmitido adicionar ou remover resultados associados a esta competição bem como alterar seu título após ter sido finalizada);
+	- Mostrar -> exibe uma página com todos os resultados para a competição correspondente. Ao final desta página, é possível inserir um novo resultado caso a competição ainda não tenha sido encerrada;
+	- Editar -> exibe uma página com um formulário em que permite-se que o usuário altere apenas o nome da competição;
+	- Finalizar -> exibe uma página com um formulário que permite ao usuário finalizar a competição correspondente inserindo-se a data e horário em que a competição se encerra (não será pertmitido adicionar ou remover resultados associados a esta competição bem como alterar seu título após ter sido finalizada);
 	- Ranking -> exibe o ranking da competição correspondente;
 	- Apagar -> deleta do banco a competição correspondente bem como todos os resultados associados a ela.
 3. Na lista de resultados:
@@ -49,7 +49,7 @@ Rode a aplicação [*aqui*](https://guarded-meadow-23996.herokuapp.com/) ou se p
 2. Usou-se o padrão de arquitetura MVC por não haver limitações quanto a isso enunciado do teste;
 3. Todas as competições e resultados associados a elas podem ser vistos no formato mostrado no enunciado do teste pelos links [competitions.json](https://guarded-meadow-23996.herokuapp.com/competitions.json) e [results.json](https://guarded-meadow-23996.herokuapp.com/results.json);
 4. Por simplicidade, não se criou cadastro de usuário com login e senha para cadastrar competições e resultados;
-5. Há poucas diferenças entre as versões nos branches diego_marcilio e diego_marcílio_heroku. O primeiro foi criado com banco de dados em *MySQL* e a aplicação é rodada localmente com o comando **rails server**. O segundo usa o banco *POSTGRES* e é a versão que está integrada com o Heroku para ser rodada online;
+5. Há poucas diferenças entre as versões nos branches diego_marcilio e diego_marcílio_heroku. O primeiro foi criado com banco de dados em **MySQL** e a aplicação é rodada localmente com o comando **rails server**. O segundo usa o banco **POSTGRES** e é a versão que está integrada com o Heroku para ser rodada online;
 
 ### Considerações Quanto ao Teste:
 1. Foram usados nomes em inglês para a criação das colunas nas tabelas dos bancos para que o Inflector gerasse nomes coerentes;
