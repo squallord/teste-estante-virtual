@@ -1,8 +1,8 @@
 # Teste prático da Estante Virtual
 
-Rode a aplicação [aqui](https://guarded-meadow-23996.herokuapp.com/) ou se preferir siga os passos abaixo para rodá-la localmente.
+Rode a aplicação [*aqui*](https://guarded-meadow-23996.herokuapp.com/) ou se preferir siga os passos abaixo para rodá-la localmente.
 
-### Passos para Rodar a Aplicação:
+### Passos para Rodar a Aplicação *Localmente*:
 #### Instalação de Pacotes e Configurações Gerais:
 1. Abra o terminal e execute os comandos:
 	- sudo gem install bundler;
@@ -10,7 +10,7 @@ Rode a aplicação [aqui](https://guarded-meadow-23996.herokuapp.com/) ou se pre
 	- sudo gem install mysql2.
 2. Na pasta da aplicação abra uma linha de comando e execute os comandos:
 	- bundle install (caso seja necessário).
-3. Na pasta config no arquivo database.yml:
+3. Na pasta config no arquivo *database.yml*:
 	- substitua o caminho do socket pelo socket correspondente na conexão local de seu sistema.
 
 #### Setup do MySQL:
@@ -29,7 +29,20 @@ Rode a aplicação [aqui](https://guarded-meadow-23996.herokuapp.com/) ou se pre
 
 ---
 
-### Mapa da Aplicação:
+### Instruções de Uso da Aplicação:
+1. No menu de navegação:
+	- Competições -> página inicial do site na qual mostram-se todas as competições;
+	- Resultados -> mostra-se uma página com resultados de todas as competições.
+2. Na lista de competições:
+	- Mostrar -> mostra-se uma página com todos os resultados para a competição correspondente. Ao final desta página, é possível inserir um novo resultado caso a competição ainda não tenha sido encerrada;
+	- Editar -> mostra-se uma página com um formulário em que permite-se que o usuário altere apenas o nome da competição;
+	- Finalizar -> mostra-se uma página com um formulário que permite ao usuário finalizar a competição correspondente inserindo-se a data e horário em que a competição se encerra (não será pertmitido adicionar ou remover resultados associados a esta competição bem como alterar seu título após ter sido finalizada);
+	- Ranking -> exibe o ranking da competição correspondente;
+	- Apagar -> deleta do banco a competição correspondente bem como todos os resultados associados a ela.
+3. Na lista de resultados:
+	- Mostrar -> exibe o resultado numa página à parte e permite que o usuário o edite, caso a competição não tenha encerrado;
+	- Editar -> exibe um formulário para que o usuário possa editar o resultado, caso a competição a qual ele pertence não tenha encerrado;
+	- Apagar -> deleta o resultado do banco de dados de resultados.
 
 ### Considerações Gerais:
 1. Escolheu-se Ruby on Rails pelo teste não limitar o uso de frameworks;
