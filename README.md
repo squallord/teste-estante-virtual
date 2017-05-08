@@ -1,2 +1,3 @@
-# teste-estante-virtual
-Teste prático da EstanteVirtual
+# Teste prático da Estante Virtual
+
+Mude para o *branch* **diego_marcilio** para ver as instruções de uso.
