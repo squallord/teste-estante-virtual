@@ -1,8 +1,28 @@
 # Teste prático da Estante Virtual
 
-Rode a aplicação em: https://guarded-meadow-23996.herokuapp.com/
+Rode a aplicação [aqui](https://guarded-meadow-23996.herokuapp.com/) ou se preferir siga os passos abaixo para rodá-la localmente.
 
-### Mapa da aplicação:
+### Passos para Rodar a Aplicação:
+#### Instalação de Pacotes e Configurações Gerais:
+1. sudo gem install bundler
+2. sudo apt-get install libmysqlclient-dev
+3. sudo gem install mysql2
+4. bundle install (caso seja necessário)
+5. substitua o socket em config/database.yml pelo socket correspondente na conexão local de seu sistema
+
+#### Setup do MySQL:
+1. create database tev_development
+2. use tev_development
+3. grant all privileges on tev_development.* to 'tevadmin'@'localhost' identified by 'password'
+
+#### Criação do Banco e Execução da Aplicação:
+1. abra uma linha de comando na pasta da aplicação digite: rake db:migrate
+2. rode o servidor local com: rails serve
+3. abra o navegador na porta que o servidor tiver aberto (ex: localhost:3000)
+
+---
+
+### Mapa da Aplicação:
 
 ### Considerações Gerais:
 1. Escolheu-se Ruby on Rails pelo teste não limitar o uso de frameworks;
