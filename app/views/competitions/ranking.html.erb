@@ -9,7 +9,7 @@
 
 <% list = [] %>
 <% if @competition.sportType == "corrida" %>
-	<% list = @competition.results.order("results.resultValue ASC") %>
+	<% list = @competition.results.order('results."resultValue" ASC') %>
 	<% templist = [] %>
 	<% list.each do |result| %>
 		<% templist.push([[], [result.athlete], [result.resultValue], [result.unit]]) %>
@@ -17,7 +17,7 @@
 	<% list = templist %>
 
 <% elsif @competition.sportType == "dardo" %>
-	<% list = @competition.results.order("results.resultValue DESC") %>
+	<% list = @competition.results.order('results."resultValue" DESC') %>
 	<% templist = [] %>
 	<% list.each do |result| %>
 		<% templist.push([[], [result.athlete], [result.resultValue], [result.unit]]) %>
